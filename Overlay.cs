@@ -342,7 +342,7 @@ namespace TarkovPriceViewer
                                 var list = item.usedInTasks.OrderBy(p => p.minPlayerLevel);
                                 foreach (var task in list)
                                 {
-                                    if (!Program.tarkovTrackerAPI.data.tasksProgress.Any(e => e.id.Equals(task.id)))
+                                    if (!Program.tarkovTrackerAPI.data.tasksProgress.Any(e => e.id.Equals(task.id) && e.complete == true))
                                     {
                                         string task1 = "";
 
@@ -404,7 +404,7 @@ namespace TarkovPriceViewer
                                         {
                                             foreach (var itemReq in stationLevel.itemRequirements)
                                             {
-                                                if (item.id == itemReq.item.id && !Program.tarkovTrackerAPI.data.hideoutModulesProgress.Any(e => e.id.Equals(stationLevel.id)))
+                                                if (item.id == itemReq.item.id && !Program.tarkovTrackerAPI.data.hideoutModulesProgress.Any(e => e.id.Equals(stationLevel.id) && e.complete == true))
                                                 {
                                                     upgradesList.Add(new hideoutUpgrades() { Name = station.name, Level = stationLevel.level, Count = itemReq.count, isInRaid = itemReq.isInRaid });
                                                 }
