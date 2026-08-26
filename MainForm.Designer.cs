@@ -718,7 +718,7 @@ namespace TarkovPriceViewer
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(150, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Use TarkovTracker.io?";
+            this.label1.Text = "Use TarkovTracker.org?";
             this.label1.MouseHover += new System.EventHandler(this.label1_MouseHover);
             // 
             // panel9

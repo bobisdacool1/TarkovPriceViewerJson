@@ -81,4 +81,4 @@ Latest Visual C++ Redistributable (https://aka.ms/vs/17/release/vc_redist.x64.ex
 6. Tarkov Wiki (https://escapefromtarkov.fandom.com/wiki/Escape_from_Tarkov_Wiki)
 7. Escape from Tarkov (https://www.escapefromtarkov.com/)
 8. Tarkov.dev API (https://tarkov.dev/)
-9. TarkovTracker API (https://tarkovtracker.io)
+9. TarkovTracker API (https://tarkovtracker.org)
