@@ -42,7 +42,7 @@ namespace TarkovPriceViewer
         public static bool finishloadingTarkovTrackerAPI = false;
         public static readonly string wiki = "https://escapefromtarkov.fandom.com/wiki/";
         public static readonly string tarkov_dev = "https://tarkov.dev/";
-        public static readonly string tarkovtracker = "https://tarkovtracker.io/";
+        public static readonly string tarkovtracker = "https://tarkovtracker.org/";
         public static readonly string tarkovmarket = "https://tarkov-market.com/item/";
         public static readonly string official = "https://www.escapefromtarkov.com/";
         public static readonly List<String> github = new List<string>() { "https://github.com/hwangshkr/TarkovPriceViewer", "https://github.com/Zotikus1001/TarkovPriceViewer" };
@@ -257,7 +257,7 @@ namespace TarkovPriceViewer
                             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
 
                             //Http response message
-                            var httpResponse = await httpClient.GetAsync("https://tarkovtracker.io/api/v2/progress");
+                            var httpResponse = await httpClient.GetAsync("https://tarkovtracker.org/api/v2/progress");
                             if (httpResponse.IsSuccessStatusCode)
                             {
                                 //Response content
