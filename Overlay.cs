@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -336,7 +336,7 @@ namespace TarkovPriceViewer
                                 }
                             }
 
-                            if (Convert.ToBoolean(Program.settings["Needs"]) && item.usedInTasks.Count > 0 && Convert.ToBoolean(Program.settings["useTarkovTrackerAPI"]) && item.name != "Roubles" && item.name != "Euros" && item.name != "Dollars")
+                            if (Convert.ToBoolean(Program.settings["Needs"]) && item.usedInTasks.Count > 0 && Convert.ToBoolean(Program.settings["useTarkovTrackerAPI"]) && Program.tarkovTrackerAPI?.data?.tasksProgress != null && item.name != "Roubles" && item.name != "Euros" && item.name != "Dollars")
                             {
                                 string tasks = "";
                                 var list = item.usedInTasks.OrderBy(p => p.minPlayerLevel);
@@ -364,7 +364,7 @@ namespace TarkovPriceViewer
                                     sb.Append(String.Format("\n\nUsed in Task:\n{0}", tasks));
                                 }
                             }
-                            else if (Convert.ToBoolean(Program.settings["Needs"]) && item.usedInTasks.Count > 0 && !Convert.ToBoolean(Program.settings["useTarkovTrackerAPI"]) && item.name != "Roubles" && item.name != "Euros" && item.name != "Dollars")
+                            else if (Convert.ToBoolean(Program.settings["Needs"]) && item.usedInTasks.Count > 0 && item.name != "Roubles" && item.name != "Euros" && item.name != "Dollars")
                             {
                                 string tasks = "";
                                 var list = item.usedInTasks.OrderBy(p => p.minPlayerLevel);
@@ -390,7 +390,7 @@ namespace TarkovPriceViewer
                             }
 
                             //Hideout Upgrades
-                            if (!Program.settings["TarkovTrackerAPIKey"].Contains("APIKey") && Convert.ToBoolean(Program.settings["useTarkovTrackerAPI"]) && Convert.ToBoolean(Program.settings["showHideoutUpgrades"]))
+                            if (!Program.settings["TarkovTrackerAPIKey"].Contains("APIKey") && Convert.ToBoolean(Program.settings["useTarkovTrackerAPI"]) && Convert.ToBoolean(Program.settings["showHideoutUpgrades"]) && Program.tarkovTrackerAPI?.data?.hideoutModulesProgress != null)
                             {
                                 var HideoutStations = Program.tarkovAPI.hideoutStations;
 

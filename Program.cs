@@ -255,6 +255,9 @@ namespace TarkovPriceViewer
                         using (var httpClient = new HttpClient())
                         {
                             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
+                            // tarkovtracker.org rejects requests without a User-Agent (HTTP 400)
+                            httpClient.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent",
+                                "TarkovPriceViewer/" + version + " (+https://github.com/hwangshkr/TarkovPriceViewer)");
 
                             //Http response message
                             var httpResponse = await httpClient.GetAsync("https://tarkovtracker.org/api/v2/progress");
@@ -273,13 +276,20 @@ namespace TarkovPriceViewer
                                     //File.WriteAllText(@"Resources\TarkovTrackerAPI.json", responseContent);
                                 }
                             }
+                            else
+                            {
+                                // Never leave the overlay waiting forever on the tracker:
+                                // prices matter more than filtering out finished tasks.
+                                Debug.WriteLine("--> TarkovTracker API returned HTTP "
+                                    + (int)httpResponse.StatusCode + " " + httpResponse.StatusCode);
+                                finishloadingTarkovTrackerAPI = true;
+                            }
                         }
                     }
                     catch (Exception ex)
                     {
-                        //MessageBox.Show("--> Error trying to update TarkovTracker API: " + ex.Message);
-                        Thread.Sleep(5000);
-                        UpdateTarkovTrackerAPI();
+                        Debug.WriteLine("--> Error trying to update TarkovTracker API: " + ex.Message);
+                        finishloadingTarkovTrackerAPI = true;
                     }
                 }
                 else
